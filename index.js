@@ -63,12 +63,28 @@ function createPlayer(name, assignValue) {
 }
 
 function displayBoard() {
+    let j = 0;
+    let k = 0;  
+
     for (let i = 0; i < 9; i++) {
         const div = document.createElement("div");
         div.setAttribute("class", "box")
-
+        div.setAttribute("id", `${j}${k++}`);
+        if (k > 2) {
+            k = 0;
+            j++;
+        }
+        
         boardContainer.appendChild(div);
     }
+}
+
+function markBoard (board) {
+    const square = document.querySelectorAll(".box"); 
+
+    for (let i = 0; i < square.length(); i++){
+
+    } 
 }
 
 displayBoard();
