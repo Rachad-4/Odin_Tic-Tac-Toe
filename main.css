@@ -1,0 +1,126 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;;
+    flex: 1;
+}
+
+#header {
+    display: flex;
+    justify-content: space-around;
+    color: beige;
+}
+
+#counter {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.middle-container {
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    border: solid black 10px;
+    border-radius: 2cap;
+    background-color: rgb(31, 30, 30);
+}
+
+img {
+    height: 500px;
+    width: 500px;  
+}
+
+#gameboard {
+    align-self: center;
+    display: grid;
+    grid-template-columns: 130px 130px 130px;
+    grid-template-rows: 130px 130px 130px;
+    gap: 10px;
+}
+
+.box {
+    width: 130px;
+    height: 130px;
+    background-color: wheat;
+}
+
+form {
+    width: 700px;
+    height: 800px;
+    background-image: url(/images/jigsaw\ 1.jpg);
+    color: white;
+    display: flex;
+    gap: 10px;
+    font-weight: bold;
+    font-size: xx-large;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: beige;
+
+}
+
+.dark-grey {
+    color: rgb(255, 251, 0);
+    font-weight: bolder;
+}
+
+#play-button {
+    margin-top: 5px;
+    width: 10rem;
+    height: 3rem;
+    background-color: red;
+    border-radius: 33%;
+    font: bold;
+    font-size: x-large
+}
+/* borrowed */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+
+body  {
+    background-image: url('https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2018/01/OfficialSawEscape09.jpg?resize=1000%2C600&ssl=1');
+  background-size:cover;
+        -webkit-animation: slidein 100s;
+        animation: slidein 100s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;              
+}
+
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+}
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+
+}
+
+
+
+.center
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(75, 75, 250, 0.3);
+  border-radius: 3px;
+}
+
