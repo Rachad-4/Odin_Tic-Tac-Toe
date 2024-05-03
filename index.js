@@ -1,6 +1,6 @@
 const boardContainer = document.querySelector("#gameboard");
 const dialog = document.querySelector("dialog");
-var assignValue = "O";
+var assignValue = "X";
 
 
 function createBoard() {
@@ -74,24 +74,29 @@ function displayBoard() {
             k = 0;
             j++;
         }
-        
+
         boardContainer.appendChild(div);
     }
 }
 
-function markBoard (board) {
+function markBoard () {
     const square = document.querySelectorAll(".box"); 
 
-    for (let i = 0; i < square.length(); i++){
-
+    for (let i = 0; i < square.length; i++){
+        square[i].addEventListener("click", (event) => {
+            square[i].textContent = `${assignValue}`;
+            if (assignValue == "X") assignValue = "O";
+            else assignValue = "X";
+        }); 
     } 
 }
 
 displayBoard();
+markBoard();
 
-document.addEventListener("click",()=>{
-    dialog.showModal();
-})
+// document.addEventListener("click",()=>{
+//     dialog.showModal();
+// })
 
 const newGame = createBoard();
 newGame.updateGameboard(0,0);
