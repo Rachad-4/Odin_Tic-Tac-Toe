@@ -85,7 +85,7 @@ form {
 body  {
     background-image: url('https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2018/01/OfficialSawEscape09.jpg?resize=1000%2C600&ssl=1');
   background-size:cover;
-        -webkit-animation: slidein 100s;
+        -webkit-animation: slidein 50s;
         animation: slidein 100s;
 
         -webkit-animation-fill-mode: forwards;
