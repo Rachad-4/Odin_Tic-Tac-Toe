@@ -75,12 +75,12 @@ form {
     height: 3rem;
     background-color: red;
     border-radius: 33%;
-    font: bold;
     font-size: x-large
 }
+
+
 /* borrowed */
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
 body  {
     background-image: url('https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2018/01/OfficialSawEscape09.jpg?resize=1000%2C600&ssl=1');

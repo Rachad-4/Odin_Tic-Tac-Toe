@@ -6,26 +6,26 @@
     <link rel="stylesheet" href="main.css">
     <title>Tic-Tac-Toe</title>
 </head>
-<body>
+<body onload="gameIntro()">
     <dialog>
         <form action="/" method >
             <section>
-                <button id="play-button" type="button">PLAY GAME</button>
+                <button id="play-button" type="submit">PLAY GAME</button>
             </section>
 
             <section><p>Let play a game! <span class="dark-grey">Few games hav</span>e stood the test of time. This ga<span class="dark-grey">me forces you to go to</span>e-to-TOE with your comp. Like <span class="dark-grey">this game, can you outl</span>ast the TICs of time of tim<span class="dark-grey">e and TACkle this challeng</span>e. WIN or <span class="dark-grey">LOSE... It is your choice.</span></p></section>
 
             <section>
-                <label for="player-1-name">Player 1 Name:<input type="text" name="player-1-name"></label>
+                <label for="player-1-name">Player 1 Name:<input type="text" name="player-1-name" id="player-1-name"></label>
             </section>
 
             <section>
-                <label for="player-2-name">Player 2 Name:<input type="text" name="player-1-name"></label>
+                <label for="player-2-name">Player 2 Name:<input type="text" name="player-2-name" id="player-2-name"></label>
             </section>
         </form>
     </dialog>
     <section id="header">
-        <div class="Player"><h1>Player 1 (X):</h1></div>
+        <div class="Player"><h1 id="p1">Player 1 (X):</h1></div>
         <div id="scoreboard">
             <div><h1>Score</h1></div>
             <div id="counter">
@@ -33,7 +33,7 @@
                 <section>Player 2 score</section>
             </div>
         </div>
-        <div class="Payer"><h1>Player 2 (O):</h1></div>
+        <div class="Payer"><h1 id="p2">Player 2 (O):</h1></div>
     </section>
 
     <section class="middle-container">
