@@ -23,6 +23,7 @@ function createBoard() {
         ];
         boardContainer.innerHTML = "";
         displayBoard();
+        markBoard();
     }    
 
     const {updateGameboard, checkResult} = gameLogic(gameboard, assignValue);
@@ -40,21 +41,28 @@ function gameLogic(gameboard) {
 
         if (gameboard[0][0] == assignValue && gameboard[0][1] == assignValue && gameboard[0][2] == assignValue) {
             alert(`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[1][0] == assignValue && gameboard[1][1] == assignValue && gameboard[1][2] == assignValue) {
             alert(`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[2][0] == assignValue && gameboard[2][1] == assignValue && gameboard[2][2] == assignValue) {
             alert(`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[0][0] == assignValue && gameboard[1][0] == assignValue && gameboard[2][0] == assignValue) {
             alert(`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[0][1] == assignValue && gameboard[1][1] == assignValue && gameboard[2][1] == assignValue) {
             alert (`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[0][2] == assignValue && gameboard[1][2] == assignValue && gameboard[2][2] == assignValue) {
             alert (`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[0][0] == assignValue && gameboard[1][1] == assignValue && gameboard[2][2] == assignValue) {
             alert(`Gameover! ${winner} won!`);
+            setTimeout(() => newGame.clear(), 1000); 
         } else if (gameboard[0][2] == assignValue && gameboard[1][1] == assignValue && gameboard[2][0] == assignValue) {
             alert(`Gameover! ${winner} won!`);
-            setTimeout(newGame.clear(), 3000); 
+            setTimeout(() => newGame.clear(), 1000); 
         }
     }   
     
