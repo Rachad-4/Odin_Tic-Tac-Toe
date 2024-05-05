@@ -26,15 +26,25 @@ function createBoard() {
         markBoard();
     }    
 
-    const {updateGameboard, checkResult} = gameLogic(gameboard, assignValue);
+    const {updateGameboard, checkResult, updateScore} = gameLogic(gameboard, assignValue);
 
-    return {gameboard, clear, updateGameboard, checkResult};
+    return {gameboard, clear, updateGameboard, checkResult, updateScore};
 }
 
 function gameLogic(gameboard) {
     const updateGameboard = (x, y) => {
         gameboard[x][y] = assignValue
     }; 
+
+    const updateScore = () => {
+        const p2_score = document.querySelector("#p2_score");
+        console.log(playerOne.getWins());
+
+        if (playerOne.getWins() > 0) {
+            const p1_score = document.querySelector("#p1-score");
+            p1_score.textContent = `${playerOne.getWins()}`;
+        }
+    }
 
     const checkResult = () => {
         var winner = assignValue == "X" ? (playerOne.getName() || "Player 1") : (playerTwo.getName() || "Player 2");
@@ -63,10 +73,15 @@ function gameLogic(gameboard) {
         } else if (gameboard[0][2] == assignValue && gameboard[1][1] == assignValue && gameboard[2][0] == assignValue) {
             alert(`Gameover! ${winner} won!`);
             setTimeout(() => newGame.clear(), 1000); 
+            if (assignValue =="X") playerOne.increaseWins();
+            else playerTwo.increaseWins();
+            newGame.updateScore();
         }
     }   
+
+    const {getWins} = createPlayer();
     
-    return {updateGameboard, checkResult}; 
+    return {updateGameboard, checkResult, getWins, updateScore}; 
 }
 
 function createPlayer() {
@@ -74,12 +89,13 @@ function createPlayer() {
     var wins = 0; 
     
     const increaseWins = () => ++wins;
+    const getWins = () => wins;
     const setName = (newName) => playerName = newName; 
     const getName = () => playerName;
     // const setAssignedValue = (newValue) => assignValue = newValue;
     // const getAssignedValue = () => assignValue;
 
-    return {increaseWins, setName, getName};
+    return {increaseWins, setName, getName, getWins};
 }
 
 function displayBoard() {
@@ -104,13 +120,15 @@ function markBoard () {
 
     for (let i = 0; i < square.length; i++){
         square[i].addEventListener("click", (event) => {
-            square[i].textContent = `${assignValue}`;
-            let x = parseInt(square[i].getAttribute("id").substring(0, 1));
-            let y = parseInt(square[i].getAttribute("id").substring(1));
-            newGame.updateGameboard(x,y);
-            newGame.checkResult();
-            if (assignValue == "X") assignValue = "O";
-            else assignValue = "X";
+            if (!square[i].textContent) {
+                square[i].textContent = `${assignValue}`;
+                let x = parseInt(square[i].getAttribute("id").substring(0, 1));
+                let y = parseInt(square[i].getAttribute("id").substring(1));
+                newGame.updateGameboard(x,y);
+                newGame.checkResult();
+                if (assignValue == "X") assignValue = "O";
+                else assignValue = "X";
+            }
         });   
     } 
 }
@@ -119,7 +137,6 @@ submitBTN.addEventListener("click", (e) => {
     e.preventDefault();
     playerOne.setName(document.querySelector("#player-1-name").value);
     playerTwo.setName(document.querySelector("#player-2-name").value); 
-    console.log(playerOne.getName());
 
     
     if (playerOne.getName()) {
@@ -132,6 +149,15 @@ submitBTN.addEventListener("click", (e) => {
         const p2 = document.querySelector("#p2");
         p2.textContent = `${playerTwo.getName()} (O)`;
     }
+
+  
+    const p2_score = document.querySelector("#p2_score");
+
+    if (playerOne.getWins() > 0) {
+        const p1_score = document.querySelector("#p1_score");
+        p1_score.textContent = `${playerOne.getWins()}`;
+    }
+
 
     dialog.close();
 })
