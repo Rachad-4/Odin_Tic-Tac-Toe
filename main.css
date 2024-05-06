@@ -8,18 +8,38 @@ body{
 
 #header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: beige;
+    gap: 50px;
+    text-shadow: 0 0 10px black;
+    font-size: 1.15rem;
+}
+
+#p1-score, #p2-score {
+    font-size: 1.55em;
+    text-shadow: 0 0 100px rgb(0, 0, 0);
+    text-rendering: optimizeLegibility;
+    font-weight: bolder;
+    color: rgb(185, 2, 2);
+}
+
+.red{
+    color: rgb(185, 2, 2);
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 0 10px black;
+    font-weight: bolder;
 }
 
 #counter {
     display: flex;
     justify-content: space-between;
     gap: 30px;
+    text-shadow: 0 0 10px black;
+    font-size: 2em;
 }
 
 .middle-container {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     gap: 30px;
     border: solid black 10px;
@@ -30,6 +50,15 @@ body{
 img {
     height: 500px;
     width: 500px;  
+}
+
+#jigga {
+    display: flex; 
+}
+
+#icon {
+    height: 40px;
+    width: 40px;
 }
 
 #gameboard {

@@ -1,7 +1,10 @@
 const boardContainer = document.querySelector("#gameboard");
 const dialog = document.querySelector("dialog");
 const submitBTN = document.querySelector("#play-button");
+const jiggaWins = document.querySelector("#jigga");
 var assignValue = "X";
+let turns = 0; 
+let ties = 0;
 
 const newGame = createBoard();
 const playerOne = createPlayer();
@@ -25,6 +28,7 @@ function createBoard() {
 function gameLogic(gameboard) {
     const updateGameboard = (x, y) => {
         gameboard[x][y] = assignValue;
+        ++turns;
     }; 
 
     const clearBoard = () => {
@@ -44,21 +48,36 @@ function gameLogic(gameboard) {
     }
 
     const updateScore = () => {
-        const p2_score = document.querySelector("#p2_score");
-        console.log(playerOne.getWins());
 
         if (playerOne.getWins() > 0) {
             const p1_score = document.querySelector("#p1-score");
             p1_score.textContent = `${playerOne.getWins()}`;
         }
+
+        if (playerTwo.getWins() > 0) {
+            const p2_score = document.querySelector("#p2-score");
+            p2_score.textContent = `${playerTwo.getWins()}`;
+        }
+
+        if (ties > 0) {
+            const div = document.createElement("div");
+            const jigsaw = img_create("images/Jigsaw icon.png", "Picture of Jigsaw's face");
+            
+            jigsaw.setAttribute("id", "icon");
+            div.appendChild(jigsaw);
+            jiggaWins.appendChild(div);
+        }
     }
 
     const endGame = (winner) => {
-        setTimeout(() => alert(`Gameover! ${winner} won!`), 800);
+        setTimeout(() => alert(`Gameover! ${winner} won!`), 500);
         setTimeout(() => newGame.clearBoard(), 1000); 
-        if (assignValue =="X") playerOne.increaseWins();
-        else playerTwo.increaseWins();
+        if (winner != "Jigsaw") {
+            if (assignValue =="X") playerOne.increaseWins();
+            else playerTwo.increaseWins();
+        }
         newGame.updateScore(); 
+        turns = 0;
     }    
 
     const checkResult = () => {
@@ -79,6 +98,10 @@ function gameLogic(gameboard) {
         } else if (gameboard[0][0] == assignValue && gameboard[1][1] == assignValue && gameboard[2][2] == assignValue) {
             endGame(winner);
         } else if (gameboard[0][2] == assignValue && gameboard[1][1] == assignValue && gameboard[2][0] == assignValue) {
+            endGame(winner);
+        } else if (turns == 9){
+            ties++;
+            winner = "Jigsaw"; 
             endGame(winner);
         }
     }   
@@ -154,17 +177,15 @@ submitBTN.addEventListener("click", (e) => {
         p2.textContent = `${playerTwo.getName()} (O)`;
     }
 
-  
-    const p2_score = document.querySelector("#p2_score");
-
-    if (playerOne.getWins() > 0) {
-        const p1_score = document.querySelector("#p1_score");
-        p1_score.textContent = `${playerOne.getWins()}`;
-    }
-
-
     dialog.close();
 })
+
+function img_create(src, alt) {
+    var img = document.createElement('img');
+    img.src = src;
+    if ( alt != null ) img.alt = alt;
+    return img;
+}
 
 function gameIntro() {
     dialog.showModal();
