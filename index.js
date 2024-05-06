@@ -164,6 +164,8 @@ submitBTN.addEventListener("click", (e) => {
 
 function gameIntro() {
     dialog.showModal();
+    var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+    audio.play();
 }
 
 
