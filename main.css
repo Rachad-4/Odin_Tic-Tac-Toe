@@ -52,7 +52,6 @@ form {
     width: 700px;
     height: 800px;
     background-image: url(/images/jigsaw\ 1.jpg);
-    color: white;
     display: flex;
     gap: 10px;
     font-weight: bold;
@@ -60,12 +59,32 @@ form {
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    color: beige;
+    color: rgb(247, 238, 235);
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 0 10px black;
 
+    /* animation: animate 2s linear infinite; */
 }
 
+
+/* @keyframes animate {
+    20%
+    {
+        color: #000000, 
+    }
+    100%
+    {
+        color: #eee2e2; 
+        text-shadow: 0 0 1px #000000, 
+        0 0 0px #000000,
+        0 0 0px #e98a83, 
+        0 0 7px #000000,  
+        0 0 10px #080303; 
+    }
+} */
+
 .dark-grey {
-    color: rgb(255, 251, 0);
+    color: rgb(255, 238, 0);
     font-weight: bolder;
 }
 

@@ -9,32 +9,39 @@ const playerTwo = createPlayer();
 
 
 function createBoard() {
+
     var gameboard =  [
-            ["","",""],
-            ["","",""],
-            ["","",""]
-        ];
+        ["","",""],
+        ["","",""],
+        ["","",""]
+    ];
+       
 
-    const clear = () => {
-        gameboard = [
-            ["","",""],
-            ["","",""],
-            ["","",""]
-        ];
-        boardContainer.innerHTML = "";
-        displayBoard();
-        markBoard();
-    }    
+    const {updateGameboard, checkResult, updateScore, clearBoard} = gameLogic(gameboard, assignValue);
 
-    const {updateGameboard, checkResult, updateScore} = gameLogic(gameboard, assignValue);
-
-    return {gameboard, clear, updateGameboard, checkResult, updateScore};
+    return {updateGameboard, checkResult, updateScore, clearBoard};
 }
 
 function gameLogic(gameboard) {
     const updateGameboard = (x, y) => {
-        gameboard[x][y] = assignValue
+        gameboard[x][y] = assignValue;
     }; 
+
+    const clearBoard = () => {
+        let j = 0;
+        let k = 0;  
+
+        for (let i = 0; i < 9; i++) {
+            gameboard[j][k++] = "";
+            if (k > 2) {
+            k = 0;
+            j++;
+            }
+        }
+        boardContainer.innerHTML = "";
+        displayBoard();
+        markBoard();
+    }
 
     const updateScore = () => {
         const p2_score = document.querySelector("#p2_score");
@@ -46,42 +53,39 @@ function gameLogic(gameboard) {
         }
     }
 
+    const endGame = (winner) => {
+        setTimeout(() => alert(`Gameover! ${winner} won!`), 800);
+        setTimeout(() => newGame.clearBoard(), 1000); 
+        if (assignValue =="X") playerOne.increaseWins();
+        else playerTwo.increaseWins();
+        newGame.updateScore(); 
+    }    
+
     const checkResult = () => {
         var winner = assignValue == "X" ? (playerOne.getName() || "Player 1") : (playerTwo.getName() || "Player 2");
 
         if (gameboard[0][0] == assignValue && gameboard[0][1] == assignValue && gameboard[0][2] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[1][0] == assignValue && gameboard[1][1] == assignValue && gameboard[1][2] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[2][0] == assignValue && gameboard[2][1] == assignValue && gameboard[2][2] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[0][0] == assignValue && gameboard[1][0] == assignValue && gameboard[2][0] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[0][1] == assignValue && gameboard[1][1] == assignValue && gameboard[2][1] == assignValue) {
-            alert (`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[0][2] == assignValue && gameboard[1][2] == assignValue && gameboard[2][2] == assignValue) {
-            alert (`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[0][0] == assignValue && gameboard[1][1] == assignValue && gameboard[2][2] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
+            endGame(winner);
         } else if (gameboard[0][2] == assignValue && gameboard[1][1] == assignValue && gameboard[2][0] == assignValue) {
-            alert(`Gameover! ${winner} won!`);
-            setTimeout(() => newGame.clear(), 1000); 
-            if (assignValue =="X") playerOne.increaseWins();
-            else playerTwo.increaseWins();
-            newGame.updateScore();
+            endGame(winner);
         }
     }   
 
     const {getWins} = createPlayer();
     
-    return {updateGameboard, checkResult, getWins, updateScore}; 
+    return {updateGameboard, checkResult, getWins, updateScore, clearBoard}; 
 }
 
 function createPlayer() {
@@ -172,8 +176,3 @@ function gameIntro() {
 
 displayBoard();
 markBoard();
-
-
-
-
-
