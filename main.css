@@ -95,6 +95,37 @@ form {
     /* animation: animate 2s linear infinite; */
 }
 
+.bottom-container{
+    margin-top: 50px;
+    color: rgb(241, 4, 4);
+    font-size: 2.00rem;
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 0 10px black;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.329);
+    border-radius: 35%;
+}
+
+#tie-game{
+    background-image: url(/images/jigsaw3.jpg);
+    font-weight: bold;
+    font-size: xx-large;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: rgb(248, 232, 10);
+    width: 700px;
+    text-shadow: 0 0 10px black;
+    text-align: center;
+}
+
+#tie-game > button {
+    color: rgb(233, 220, 220);
+    font-size: x-large;
+    background-color: red;
+    border-style: hidden;
+    border-radius: 50%;
+    text-align: center;
+}
 
 /* @keyframes animate {
     20%

@@ -1,7 +1,9 @@
 const boardContainer = document.querySelector("#gameboard");
-const dialog = document.querySelector("dialog");
+const dialog = document.querySelector("#intro");
+const firstTie = document.querySelector("#tie-game");
 const submitBTN = document.querySelector("#play-button");
 const jiggaWins = document.querySelector("#jigga");
+
 var assignValue = "X";
 let turns = 0; 
 let ties = 0;
@@ -47,19 +49,19 @@ function gameLogic(gameboard) {
         markBoard();
     }
 
-    const updateScore = () => {
+    const updateScore = (winner) => {
 
-        if (playerOne.getWins() > 0) {
+        if (winner == playerOne.getName() || winner == "Player 1") {
             const p1_score = document.querySelector("#p1-score");
             p1_score.textContent = `${playerOne.getWins()}`;
         }
 
-        if (playerTwo.getWins() > 0) {
+        if (winner == playerTwo.getName() || winner == "Player 2") {
             const p2_score = document.querySelector("#p2-score");
             p2_score.textContent = `${playerTwo.getWins()}`;
         }
 
-        if (ties > 0) {
+        if (winner == "Jigsaw") {
             const div = document.createElement("div");
             const jigsaw = img_create("images/Jigsaw icon.png", "Picture of Jigsaw's face");
             
@@ -70,17 +72,19 @@ function gameLogic(gameboard) {
     }
 
     const endGame = (winner) => {
-        setTimeout(() => alert(`Gameover! ${winner} won!`), 500);
+        setTimeout(() => alert(`Round over! ${winner} won!`), 500);
         setTimeout(() => newGame.clearBoard(), 1000); 
         if (winner != "Jigsaw") {
             if (assignValue =="X") playerOne.increaseWins();
             else playerTwo.increaseWins();
         }
-        newGame.updateScore(); 
+        newGame.updateScore(winner);
         turns = 0;
     }    
 
     const checkResult = () => {
+
+
         var winner = assignValue == "X" ? (playerOne.getName() || "Player 1") : (playerTwo.getName() || "Player 2");
 
         if (gameboard[0][0] == assignValue && gameboard[0][1] == assignValue && gameboard[0][2] == assignValue) {
@@ -143,6 +147,14 @@ function displayBoard() {
 }
 
 function markBoard () {
+    if (ties == 1){
+        firstTie.showModal("");
+
+        setTimeout(()=>{
+            firstTie.close();
+        }, 8000);
+    }
+    
     const square = document.querySelectorAll(".box"); 
 
     for (let i = 0; i < square.length; i++){
@@ -155,6 +167,7 @@ function markBoard () {
                 newGame.checkResult();
                 if (assignValue == "X") assignValue = "O";
                 else assignValue = "X";
+                getCurrentPlayer(); 
             }
         });   
     } 
@@ -168,15 +181,16 @@ submitBTN.addEventListener("click", (e) => {
     
     if (playerOne.getName()) {
         const p1 = document.querySelector("#p1");
-        p1.textContent = `${playerOne.getName()} (X)`;
+        p1.textContent = `${playerOne.getName()}`;
         console.log(playerOne.getName());
     }
 
     if (playerTwo.getName()) {
         const p2 = document.querySelector("#p2");
-        p2.textContent = `${playerTwo.getName()} (O)`;
+        p2.textContent = `${playerTwo.getName()}`;
     }
 
+    getCurrentPlayer();
     dialog.close();
 })
 
@@ -185,6 +199,13 @@ function img_create(src, alt) {
     img.src = src;
     if ( alt != null ) img.alt = alt;
     return img;
+}
+
+function getCurrentPlayer() {
+    const currentPlayer = document.querySelector("#current-player");
+
+    if (assignValue == "X") currentPlayer.textContent = `${playerOne.getName()}` || "Player 1";
+    else currentPlayer.textContent = `${playerTwo.getName()}` || "Player 2";
 }
 
 function gameIntro() {

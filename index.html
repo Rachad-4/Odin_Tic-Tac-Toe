@@ -7,13 +7,13 @@
     <title>Tic-Tac-Toe</title>
 </head>
 <body onload="gameIntro()">
-    <dialog>
+    <dialog id="intro">
         <form action="/" method >
             <section>
                 <button id="play-button" type="submit">PLAY GAME</button>
             </section>
 
-            <section><p>Let play a game! <span class="dark-grey">Few games hav</span>e stood the test of time. This ga<span class="dark-grey">me forces you to go toe</span>-to-TOE with your comp.<span class="dark-grey">Like this game, can you </span>outlast the TICs of tim<span class="dark-grey">e and TACkle this challen</span>ge. WIN or <span class="dark-grey">LOSE... It is your choice.</span></p></section>
+            <section><p>I want to play a <span class="dark-grey">game! Few games </span>have stood the test of time. Th<span class="dark-grey">is game forces you to </span>go toe-to-TOE with your co<span class="dark-grey">mp. Like this game, can </span>you outlast the TICs of <span class="dark-grey">time and TACkle this cha</span>llenge. WIN o<span class="dark-grey">r LOSE... Make your choic</span>e.</p></section>
 
             <section>
                 <label for="player-1-name"><span class="dark-grey">Player 1 Name:</span><input type="text" name="player-1-name" id="player-1-name"></label>
@@ -24,18 +24,21 @@
             </section>
         </form>
     </dialog>
+    <dialog id="tie-game">
+        <p>Tie games are counted as victories for me. If I win, you (BOTH) lose! Make your choice.</p>
+    </dialog>
     <section id="header">
         <div class="Player">
-            <div><h1 id="p1">Player 1 (<span class="red">X</span>):</h1></div>
-            <div id="p1-score"><span class="red">Player 1 score</span></div>
+            <div><h1><span id="p1">Player 1 </span> (<span class="red">X</span>)</h1></div>
+            <div id="p1-score"><span class="red">Player 1 has no wins</span></div>
         </div>
         <div id="scoreboard">
             <div><h1>Score</h1></div>
             <div id="jigga"></div>
         </div>
         <div class="Player">
-            <div><h1 id="p2">Player 2 (<span class="red">O</span>):</h1></div>
-            <div id="p2-score"><span class="red">Player 2 score</span</div>
+            <div><h1><span id="p2">Player 2 </span> (<span class="red">O</span>):</h1></div>
+            <div id="p2-score"><span class="red">Player 2 has no wins</span</div>
         </div>
     </section>
 
@@ -45,6 +48,10 @@
         </div>
         <div id="gameboard"></div>
         <div class="pic"><img src="/images/jigsaw 2.jpg" alt="riding of jigsaw riding a bike"></div>
+    </section>
+
+    <section class="bottom-container">
+        <div><span id="current-player"></span> it is time to choose.</div>
     </section>
     <script src="/index.js"></script>
 </body>
