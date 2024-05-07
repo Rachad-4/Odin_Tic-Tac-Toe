@@ -7,6 +7,7 @@ const jiggaWins = document.querySelector("#jigga");
 var assignValue = "X";
 let turns = 0; 
 let ties = 0;
+let fistTieGame = true;
 
 const newGame = createBoard();
 const playerOne = createPlayer();
@@ -72,7 +73,7 @@ function gameLogic(gameboard) {
     }
 
     const endGame = (winner) => {
-        setTimeout(() => alert(`Round over! ${winner} won!`), 500);
+        setTimeout(() => alert(`Round over! ${winner} won!`), 300);
         setTimeout(() => newGame.clearBoard(), 1000); 
         if (winner != "Jigsaw") {
             if (assignValue =="X") playerOne.increaseWins();
@@ -147,14 +148,14 @@ function displayBoard() {
 }
 
 function markBoard () {
-    if (ties == 1){
+    if (ties == 1 && fistTieGame == true){
         firstTie.showModal("");
 
         setTimeout(()=>{
             firstTie.close();
         }, 8000);
     }
-    
+
     const square = document.querySelectorAll(".box"); 
 
     for (let i = 0; i < square.length; i++){
@@ -208,11 +209,11 @@ function getCurrentPlayer() {
     else currentPlayer.textContent = `${playerTwo.getName()}` || "Player 2";
 }
 
-function gameIntro() {
-    dialog.showModal();
-    var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
-    audio.play();
-}
+// function gameIntro() {
+//     dialog.showModal();
+//     var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+//     audio.play();
+// }
 
 
 
