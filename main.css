@@ -114,6 +114,7 @@ form {
     background-size: 100% 100%;
     color: rgb(248, 232, 10);
     width: 700px;
+    height: 250px;
     text-shadow: 0 0 10px black;
     text-align: center;
 }

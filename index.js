@@ -150,11 +150,13 @@ function displayBoard() {
 function markBoard () {
     if (ties == 1 && firstTieGame == true){
         firstTieGame == false; 
+        var laugh = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip-[AudioTrimmer.com].mp3")
+        laugh.play();
         firstTie.showModal("");
 
-        setTimeout(()=>{
+        document.addEventListener("click", () => {
             firstTie.close();
-        }, 8000);
+        });
     }
 
     const square = document.querySelectorAll(".box"); 
@@ -219,11 +221,11 @@ function outro(){
     }
 }
 
-function gameIntro() {
-    dialog.showModal();
-    var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
-    audio.play();
-}
+// function gameIntro() {
+//     dialog.showModal();
+//     var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+//     audio.play();
+// }
 
 
 
