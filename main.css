@@ -80,7 +80,7 @@ img {
 form {
     width: 700px;
     height: 800px;
-    background-image: url(/images/jigsaw\ 1.jpg);
+    background-image: url(./images/jigsaw\ 1.jpg);
     display: flex;
     gap: 10px;
     font-weight: bold;
@@ -107,7 +107,7 @@ form {
 }
 
 #tie-game{
-    background-image: url(/images/jigsaw3.jpg);
+    background-image: url(./images/jigsaw3.jpg);
     font-weight: bold;
     font-size: xx-large;
     background-repeat: no-repeat;
