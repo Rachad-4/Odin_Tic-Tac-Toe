@@ -209,11 +209,20 @@ function getCurrentPlayer() {
     else currentPlayer.textContent = `${playerTwo.getName()}` || "Player 2";
 }
 
-// function gameIntro() {
-//     dialog.showModal();
-//     var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
-//     audio.play();
-// }
+function outro(){
+    if (playerOne.getWins() == 5) {
+        const body = document.querySelector("body");
+        body.innerHTML = "";
+
+
+    }
+}
+
+function gameIntro() {
+    dialog.showModal();
+    var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+    audio.play();
+}
 
 
 
