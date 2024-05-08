@@ -7,7 +7,7 @@ const jiggaWins = document.querySelector("#jigga");
 var assignValue = "X";
 let turns = 0; 
 let ties = 0;
-let fistTieGame = true;
+let firstTieGame = true;
 
 const newGame = createBoard();
 const playerOne = createPlayer();
@@ -148,7 +148,8 @@ function displayBoard() {
 }
 
 function markBoard () {
-    if (ties == 1 && fistTieGame == true){
+    if (ties == 1 && firstTieGame == true){
+        firstTieGame == false; 
         firstTie.showModal("");
 
         setTimeout(()=>{
