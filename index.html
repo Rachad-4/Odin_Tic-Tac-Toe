@@ -24,12 +24,26 @@
             </section>
         </form>
     </dialog>
+
     <dialog id="tie-game">
-        <p>Tie games are counted as victories for me. If I win, you (BOTH) lose! Make your choice.</p>
+        <p>Tie games are counted as victories for me. If I win, you (BOTH) lose! The choice is yours.</p>
     </dialog>
+
+    <dialog id="winner">
+        <div>Congrats, <span id="winning-player"></span>! You chose life.</div>
+        <div><img src="https://c.tenor.com/KKAf3S1pMncAAAAC/free-freedom.gif" alt=""></div>
+        <!-- <video src=""></video> -->
+    </dialog>
+
+    <dialog id="loser">
+        <div<span id="losing-player"></span>You</div>
+        <div><img id ="ending"src="./images/jigsaw-on-bike.gif" alt="jigsaw riding a bike"></div>
+        <!-- <video src="" height="400px" width="400px"></video> -->
+    </dialog>
+
     <section id="header">
         <div class="Player">
-            <div><h1><span id="p1">Player 1 </span> (<span class="red">X</span>)</h1></div>
+            <div id="1-alias"><h1><span id="p1">Player 1 </span> (<span class="red">X</span>)</h1></div>
             <div id="p1-score"><span class="red">Player 1 has no wins</span></div>
         </div>
         <div id="scoreboard">
@@ -37,7 +51,7 @@
             <div id="jigga"></div>
         </div>
         <div class="Player">
-            <div><h1><span id="p2">Player 2 </span> (<span class="red">O</span>):</h1></div>
+            <div id="2-alias"><h1><span id="p2">Player 2 </span> (<span class="red">O</span>):</h1></div>
             <div id="p2-score"><span class="red">Player 2 has no wins</span</div>
         </div>
     </section>

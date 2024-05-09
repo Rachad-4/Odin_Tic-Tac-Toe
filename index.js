@@ -1,6 +1,8 @@
 const boardContainer = document.querySelector("#gameboard");
 const dialog = document.querySelector("#intro");
 const firstTie = document.querySelector("#tie-game");
+const won = document.querySelector("#winner");
+const loss = document.querySelector("#loss");
 const submitBTN = document.querySelector("#play-button");
 const jiggaWins = document.querySelector("#jigga");
 
@@ -54,6 +56,13 @@ function gameLogic(gameboard) {
 
         if (winner == playerOne.getName() || winner == "Player 1") {
             const p1_score = document.querySelector("#p1-score");
+            const p1 = document.querySelector("#p1");
+            var heatbeat = new Audio("sounds/fast-heartbeat-[AudioTrimmer.com].mp3")
+            heatbeat.play();
+            p1.classList.toggle("winner");
+            setTimeout(() => {p1.classList.toggle("winner");}, 300);
+            setTimeout(() => {p1.classList.toggle("winner");}, 700);
+            setTimeout(() => {p1.classList.toggle("winner");}, 900);
             p1_score.textContent = `${playerOne.getWins()}`;
         }
 
@@ -73,7 +82,7 @@ function gameLogic(gameboard) {
     }
 
     const endGame = (winner) => {
-        setTimeout(() => alert(`Round over! ${winner} won!`), 300);
+        // setTimeout(() => alert(`Round over! ${winner} won!`), 300);
         setTimeout(() => newGame.clearBoard(), 1000); 
         if (winner != "Jigsaw") {
             if (assignValue =="X") playerOne.increaseWins();
@@ -81,6 +90,7 @@ function gameLogic(gameboard) {
         }
         newGame.updateScore(winner);
         turns = 0;
+        outro();
     }    
 
     const checkResult = () => {
@@ -148,9 +158,10 @@ function displayBoard() {
 }
 
 function markBoard () {
+
     if (ties == 1 && firstTieGame == true){
-        firstTieGame == false; 
-        var laugh = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip-[AudioTrimmer.com].mp3")
+        firstTieGame = false; 
+        var laugh = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip-[AudioTrimmer.com].mp3");
         laugh.play();
         firstTie.showModal("");
 
@@ -213,10 +224,18 @@ function getCurrentPlayer() {
 }
 
 function outro(){
-    if (playerOne.getWins() == 5) {
-        const body = document.querySelector("body");
-        body.innerHTML = "";
+    var winner = assignValue == "O" ? `${playerTwo.getName()}` || "Player 2" : `${playerOne.getName()}` || "Player 1";
+    var loser = assignValue == "X" ? `${playerOne.getName()}` || "Player 1" : `${playerTwo.getName()}` || "Player 2";
 
+    if (playerOne.getWins() == 3 || playerTwo.getWins() == 3 || document.querySelectorAll("#icon").length == 3) {
+        const wonGame = document.querySelector("#winning-player");
+        const lostGame = document.querySelector("#losing-player");
+        wonGame.textContent = `${winner}`; 
+
+        won.showModal(""); 
+        won.addEventListener("click", () => {
+            won.close();
+        });
 
     }
 }
