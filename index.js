@@ -56,18 +56,13 @@ function gameLogic(gameboard) {
 
         if (winner == playerOne.getName() || winner == "Player 1") {
             const p1_score = document.querySelector("#p1-score");
-            const p1 = document.querySelector("#p1");
-            var heatbeat = new Audio("sounds/fast-heartbeat-[AudioTrimmer.com].mp3")
-            heatbeat.play();
-            p1.classList.toggle("winner");
-            setTimeout(() => {p1.classList.toggle("winner");}, 300);
-            setTimeout(() => {p1.classList.toggle("winner");}, 700);
-            setTimeout(() => {p1.classList.toggle("winner");}, 900);
+            animateWinner("#p1");
             p1_score.textContent = `${playerOne.getWins()}`;
         }
 
         if (winner == playerTwo.getName() || winner == "Player 2") {
             const p2_score = document.querySelector("#p2-score");
+            animateWinner("#p2");
             p2_score.textContent = `${playerTwo.getWins()}`;
         }
 
@@ -238,6 +233,16 @@ function outro(){
         });
 
     }
+}
+
+function animateWinner(player) {
+    const p1 = document.querySelector(player);
+    var heatbeat = new Audio("sounds/fast-heartbeat-[AudioTrimmer.com].mp3")
+    heatbeat.play();
+    p1.classList.toggle("winner");
+    setTimeout(() => {p1.classList.toggle("winner");}, 300);
+    setTimeout(() => {p1.classList.toggle("winner");}, 700);
+    setTimeout(() => {p1.classList.toggle("winner");}, 900);
 }
 
 function gameIntro() {
