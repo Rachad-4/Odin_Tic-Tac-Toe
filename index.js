@@ -221,11 +221,14 @@ function getCurrentPlayer() {
 function outro(){
     var winner = assignValue == "O" ? `${playerTwo.getName()}` || "Player 2" : `${playerOne.getName()}` || "Player 1";
     var loser = assignValue == "O" ? `${playerOne.getName()}` || "Player 1" : `${playerTwo.getName()}` || "Player 2";
+    const bottomContainer = document.querySelector(".bottom-container");
 
-    if (playerOne.getWins() == 3 || playerTwo.getWins() == 3 || document.querySelectorAll("#icon").length == 3) {
+    if (playerOne.getWins() == 3 || playerTwo.getWins() == 3) {
         const wonGame = document.querySelector("#winning-player");
         const lostGame = document.querySelector("#losing-player");
         const lossImg = document.querySelector("#ending");
+        
+        bottomContainer.classList.toggle("hide");
         wonGame.textContent = `${winner}`; 
         lostGame.textContent = `${loser}`;
 
@@ -246,6 +249,23 @@ function outro(){
                 knock.play();
             }, 5000);    
         });
+    } else if (document.querySelectorAll("#icon").length == 3) {
+        bottomContainer.classList.toggle("hide");
+        loss.showModal("");
+        setTimeout(() => {
+            lossImg.setAttribute("src", "images/gameover.gif");
+        }, 1550);
+
+        setTimeout(()=> {
+            lossImg.setAttribute("src","https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHM0ZXI0OXE3aXdybW4xb3ZpcnNlYXU0amVhZHVjYmE0ODY4NGVxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/28aGE5xerXkbK/giphy.gif");
+            var scream = new Audio("sounds/scream-noise-[AudioTrimmer.com].mp3");
+            scream.play();
+        },4000);
+
+        setTimeout( ()=> {
+            var knock = new Audio("sounds/knocking-on-door.mp3");
+            knock.play();
+        }, 5000);    
     }
 }
 
@@ -264,8 +284,6 @@ function gameIntro() {
     var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
     audio.play();
 }
-
-
 
 displayBoard();
 markBoard();

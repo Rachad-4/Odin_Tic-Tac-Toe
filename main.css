@@ -147,6 +147,10 @@ form {
     letter-spacing: 5px;
     font-size: 1.5rem;
 }
+
+.hide {
+    display: none;
+}
 /* @keyframes animate {
     20%
     {
