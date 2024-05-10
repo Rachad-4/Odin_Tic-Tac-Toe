@@ -261,7 +261,7 @@ function outro(){
             lossImg.setAttribute("src","https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHM0ZXI0OXE3aXdybW4xb3ZpcnNlYXU0amVhZHVjYmE0ODY4NGVxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/28aGE5xerXkbK/giphy.gif");
             var scream = new Audio("sounds/scream-noise-[AudioTrimmer.com].mp3");
             scream.play();
-        },4000);
+        },3800);
 
         setTimeout( ()=> {
             var knock = new Audio("sounds/knocking-on-door.mp3");
@@ -290,7 +290,7 @@ function gameIntro() {
         var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
         audio.play();
     });
-    
+
     notification.removeEventListener("click", ()=>{
         notification.close();
         dialog.showModal();
