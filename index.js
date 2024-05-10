@@ -222,11 +222,12 @@ function outro(){
     var winner = assignValue == "O" ? `${playerTwo.getName()}` || "Player 2" : `${playerOne.getName()}` || "Player 1";
     var loser = assignValue == "O" ? `${playerOne.getName()}` || "Player 1" : `${playerTwo.getName()}` || "Player 2";
     const bottomContainer = document.querySelector(".bottom-container");
+    const lossImg = document.querySelector("#ending");
 
     if (playerOne.getWins() == 3 || playerTwo.getWins() == 3) {
         const wonGame = document.querySelector("#winning-player");
         const lostGame = document.querySelector("#losing-player");
-        const lossImg = document.querySelector("#ending");
+        
         
         bottomContainer.classList.toggle("hide");
         wonGame.textContent = `${winner}`; 
