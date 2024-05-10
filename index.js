@@ -286,5 +286,18 @@ function gameIntro() {
     audio.play();
 }
 
+function soundsPermission(){
+    if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
+        alert("yes");
+      } else if (navigator.getAutoplayPolicy("mediaelement") === "allowed-muted") {
+        // Mute audio on video
+        alert("muted");
+      } else if (navigator.getAutoplayPolicy("mediaelement") === "disallowed") {
+        // Set a default placeholder image.
+        alert("no");
+      }
+} 
+
+  
 displayBoard();
 markBoard();
