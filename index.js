@@ -298,6 +298,6 @@ function soundsPermission(){
       }
 } 
 
-  
+soundsPermission();  
 displayBoard();
 markBoard();
