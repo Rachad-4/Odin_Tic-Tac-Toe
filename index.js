@@ -281,9 +281,22 @@ function animateWinner(player) {
 }
 
 function gameIntro() {
-    dialog.showModal();
-    var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
-    audio.play();
+
+    const notification = document.querySelector("#sound-notification");
+    notification.showModal("");
+    notification.addEventListener("click", ()=> {
+        notification.close();
+        dialog.showModal();
+        var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+        audio.play();
+    });
+    
+    notification.removeEventListener("click", ()=>{
+        notification.close();
+        dialog.showModal();
+        var audio = new Audio("sounds/Jigsaw i want to play the game - Converted with FlexClip.mp3");
+        audio.play();
+    });
 }
 
 function soundsPermission(){
@@ -298,6 +311,7 @@ function soundsPermission(){
       }
 } 
 
-soundsPermission();  
+// soundsPermission();  
+
 displayBoard();
 markBoard();

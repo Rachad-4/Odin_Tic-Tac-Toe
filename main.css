@@ -192,6 +192,19 @@ form {
     color: red;
 }
 
+#sound-notification {
+    background-color: rgb(63, 62, 62);
+    font-size: larger;
+    color: red;
+    text-shadow: 0 0 10px black;
+    border-style: hidden;
+    border-radius: 2cap;
+}
+
+#sound-statement {
+    font-size: 2em;
+    color: beige;
+}
 
 /* borrowed */
 
