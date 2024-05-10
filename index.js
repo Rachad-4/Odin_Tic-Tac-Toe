@@ -2,7 +2,7 @@ const boardContainer = document.querySelector("#gameboard");
 const dialog = document.querySelector("#intro");
 const firstTie = document.querySelector("#tie-game");
 const won = document.querySelector("#winner");
-const loss = document.querySelector("#loss");
+const loss = document.querySelector("#loser");
 const submitBTN = document.querySelector("#play-button");
 const jiggaWins = document.querySelector("#jigga");
 
@@ -220,18 +220,32 @@ function getCurrentPlayer() {
 
 function outro(){
     var winner = assignValue == "O" ? `${playerTwo.getName()}` || "Player 2" : `${playerOne.getName()}` || "Player 1";
-    var loser = assignValue == "X" ? `${playerOne.getName()}` || "Player 1" : `${playerTwo.getName()}` || "Player 2";
+    var loser = assignValue == "O" ? `${playerOne.getName()}` || "Player 1" : `${playerTwo.getName()}` || "Player 2";
 
     if (playerOne.getWins() == 3 || playerTwo.getWins() == 3 || document.querySelectorAll("#icon").length == 3) {
         const wonGame = document.querySelector("#winning-player");
         const lostGame = document.querySelector("#losing-player");
+        const lossImg = document.querySelector("#ending");
         wonGame.textContent = `${winner}`; 
+        lostGame.textContent = `${loser}`;
 
         won.showModal(""); 
         won.addEventListener("click", () => {
             won.close();
+            loss.showModal("");
+            setTimeout(() => {
+                lossImg.setAttribute("src", "images/gameover.gif");
+            }, 1550);
+            setTimeout(()=> {
+                lossImg.setAttribute("src","https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHM0ZXI0OXE3aXdybW4xb3ZpcnNlYXU0amVhZHVjYmE0ODY4NGVxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/28aGE5xerXkbK/giphy.gif");
+                var scream = new Audio("sounds/scream-noise-[AudioTrimmer.com].mp3");
+                scream.play();
+            },4000);
+            setTimeout( ()=> {
+                var knock = new Audio("sounds/knocking-on-door.mp3");
+                knock.play();
+            }, 5000);    
         });
-
     }
 }
 

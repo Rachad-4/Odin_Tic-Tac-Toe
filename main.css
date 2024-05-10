@@ -133,6 +133,20 @@ form {
     color:rgb(185, 2, 2); 
 } 
 
+#winner, #loser {
+    font-size: xx-large;
+    font-weight: bolder;
+    color: beige;
+    text-shadow: 0 0 10px black;
+    background-color: rgba(110, 110, 110, 0.877);
+}
+
+#title {
+    color: beige;
+    margin-bottom: -35px;
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+}
 /* @keyframes animate {
     20%
     {
@@ -161,6 +175,16 @@ form {
     background-color: red;
     border-radius: 33%;
     font-size: x-large
+}
+
+#watermark { 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    z-index:999; 
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    font-weight: bolder;
+    color: red;
 }
 
 
